@@ -40,7 +40,7 @@ create table `Child` (
 foreign key (`pid`) references `Parent` (`pid`)
 );
 
-insert into `Parent` values ('p101', '이성계', '010-1234'1111');
+insert into `Parent` values ('p101', '이성계', '010-1234-1111');
 insert into `Child` values ('p101', '이방원', '010-1234-1001', 'p101');
 
 #실습 2-6
@@ -50,7 +50,7 @@ create table `User4` (
 `name`	varchar(10),
 `gender`	tinyint,
 `age`	tinyint,
-`addr`	varchar(255),
+`addr`	varchar(255)
 );
 
 insert into `User4`(`name`, `gender`, `age`, `addr`) values ('김유신', 1, 25, '김해시');
@@ -59,28 +59,49 @@ insert into `User4`(`name`, `gender`, `age`, `addr`) values ('신사임당', 2, 
 delete from `User4` where `name` ='신사임당';
 
 #실습 2-7
-create table `User5` 
-`name`	varchar(10), NOT NULL, ,
+create table `User5`( 
+`name`		varchar(10) NOT NULL,
 `gender`	tinyint,
-`age`	tinyint, default 1,
-`addr`	varchar(255),
+`age`		tinyint default 1,
+`addr`		varchar(255)
 );
 
 insert into `User5` set `name` = '김유신';
-
+insert into `User5` set `name` = '김춘추', `addr` = '부산시';
 
 #실습 2-8
+insert into `User5` set `name`='김유신';
+insert into `User5` set `name`='김춘추', `addr`='부산시';
 
 #실습 2-9
+create table `User5` (
+`name` VARCHAR(10) NOT NULL,
+`gender` TINYINT,
+`age` INT DEFAULT 1,
+`addr` VARCHAR(10)
+);
 
 #실습 2-10
+insert into `User5` set `name` = '김유신';
+insert into `User5` set `name` = '김춘추', `addr`='부산시';
+
+#실습 2-11
+alter table `User5` add `hp` varchar(20);
+alter table `User5` add `birth` char(10) default '0000-00-00' after `name`;
+alter table `User5` add `uid` varchar(10) first;
 
 #실습 2-12
+alter table `User5` modify `hp` char(13);
+alter table `User5` modify `age` tinyint;
 
 #실습 2-13
+alter table `User5` change column `addr` `address` varchar(100);
 
 #실습 2-14
+alter table `User5` drop `gender`;
 
 #실습 2-15
+create table `User6` like `User5`;
 
 #실습 2-16
+insert into `User6` select *from `User5`;

@@ -4,7 +4,7 @@
 
 #실습2-1
 create database `java1_Bank`;
-create user 'java1_admin2'@'%' identified by '134';
+create user 'java1_admin2'@'%' identified by '1234';
 grant all privileges on `java1_Bank`.* to 'java1_admin2'@'%';
 flush privileges;
 
